@@ -1,0 +1,67 @@
+{
+    "name": "Geb",
+    "package": "Geb",
+    "index": "index.html",
+    "icon32x32": "images/logo.png",
+    "externalURL": "http://www.gebish.org/",
+    "selectors": {
+        "h2 a": "Guide",
+        "h3 a": "Section",
+        "title": [
+            {
+                "type": "Package",
+                "regexp": "\\s+\\(.*\\)",
+                "replacement": "",
+                "matchpath": "api/.*/package-summary\\.html"
+            },
+            {
+                "type": "Class",
+                "regexp": "\\s+\\(.*\\)",
+                "replacement": "",
+                "matchpath": "api/.*/[A-Z].*\\.html"
+            }
+        ],
+        "li.blockList a[name='constructor_detail'] ~ a[name]": {
+            "type": "Constructor",
+            "attr": "name",
+            "matchpath": "api/.*/[A-Z].*\\.html"
+        },
+        "li.blockList a[name='method_detail'] ~ a[name]": {
+            "type": "Method",
+            "attr": "name",
+            "matchpath": "api/.*/[A-Z].*\\.html"
+        },
+        "li.blockList a[name='prop_detail'] ~ a[name]": {
+            "type": "Property",
+            "attr": "name",
+            "matchpath": "api/.*/[A-Z].*\\.html"
+        },
+        "li.blockList a[name='field_detail'] ~ a[name]": {
+            "type": "Field",
+            "attr": "name",
+            "matchpath": "api/.*/[A-Z].*\\.html"
+        },
+        "li.blockList a[name='trait_detail'] ~ a[name]": {
+            "type": "Trait",
+            "attr": "name",
+            "matchpath": "api/.*/[A-Z].*\\.html"
+        },
+        "li.blockList a[name='annotation_detail'] ~ a[name]": {
+            "type": "Annotation",
+            "attr": "name",
+            "matchpath": "api/.*/[A-Z].*\\.html"
+        },
+        "li.blockList a[name='exception_detail'] ~ a[name]": {
+            "type": "Exception",
+            "attr": "name",
+            "matchpath": "api/.*/[A-Z].*\\.html"
+        },
+        "li.blockList a[name='error_detail'] ~ a[name]": {
+            "type": "Error",
+            "attr": "name",
+            "matchpath": "api/.*/[A-Z].*\\.html"
+        }
+    },
+    "ignore": [
+    ]
+}
