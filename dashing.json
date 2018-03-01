@@ -7,20 +7,46 @@
     "selectors": {
         "h2 a": "Guide",
         "h3 a": "Section",
-        "title": [
+        "title": {
+            "type": "Package",
+            "regexp": "\\s+\\(.*\\)",
+            "replacement": "",
+            "matchpath": "api/.*/package-summary\\.html"
+        },
+        "h2[title*=' Class ']": [
             {
-                "type": "Package",
-                "regexp": "\\s+\\(.*\\)",
+                "requiretext": "Exception$",
+                "type": "Exception",
+                "regexp": "\\[.+?\\] Class ",
                 "replacement": "",
-                "matchpath": "api/.*/package-summary\\.html"
+                "matchpath": "api/.*/[A-Z].*\\.html"
+            },
+            {
+                "requiretext": "Error$",
+                "type": "Error",
+                "regexp": "\\[.+?\\] Class ",
+                "replacement": "",
+                "matchpath": "api/.*/[A-Z].*\\.html"
             },
             {
                 "type": "Class",
-                "regexp": "\\s+\\(.*\\)",
+                "regexp": "\\[.+?\\] Class ",
                 "replacement": "",
                 "matchpath": "api/.*/[A-Z].*\\.html"
             }
         ],
+        "h2[title*=' Interface ']": {
+            "type": "Interface",
+            "regexp": "\\[.+?\\] Interface ",
+            "replacement": "",
+            "matchpath": "api/.*/[A-Z].*\\.html"
+        },
+        "h2[title*=' Trait ']": {
+            "type": "Trait",
+            "regexp": "\\[.+?\\] Trait ",
+            "replacement": "",
+            "matchpath": "api/.*/[A-Z].*\\.html"
+        },
         "li.blockList a[name='constructor_detail'] ~ a[name]": {
             "type": "Constructor",
             "attr": "name",
@@ -38,26 +64,6 @@
         },
         "li.blockList a[name='field_detail'] ~ a[name]": {
             "type": "Field",
-            "attr": "name",
-            "matchpath": "api/.*/[A-Z].*\\.html"
-        },
-        "li.blockList a[name='trait_detail'] ~ a[name]": {
-            "type": "Trait",
-            "attr": "name",
-            "matchpath": "api/.*/[A-Z].*\\.html"
-        },
-        "li.blockList a[name='annotation_detail'] ~ a[name]": {
-            "type": "Annotation",
-            "attr": "name",
-            "matchpath": "api/.*/[A-Z].*\\.html"
-        },
-        "li.blockList a[name='exception_detail'] ~ a[name]": {
-            "type": "Exception",
-            "attr": "name",
-            "matchpath": "api/.*/[A-Z].*\\.html"
-        },
-        "li.blockList a[name='error_detail'] ~ a[name]": {
-            "type": "Error",
             "attr": "name",
             "matchpath": "api/.*/[A-Z].*\\.html"
         }
