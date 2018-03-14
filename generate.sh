@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PKGS="wget python"
+PKGS="wget python go"
 PY_PKGS="beautifulsoup4"
 BUILD=build
 VERSION=2.1
@@ -14,12 +14,9 @@ for PY_PKG in ${PY_PKGS}; do
     pip show ${PY_PKG} 1>/dev/null 2>/dev/null || sudo pip install ${PY_PKG} || exit 1
 done
 
-DASHING="$(which dashing 2>/dev/null)"
-if [ -z "${DASHING}" ]; then
-    DASHING="${HOME}/gopath/bin/dashing"
-    if [ ! -s "${DASHING}" ]; then
-        go get -u github.com/technosophos/dashing || exit 1
-    fi
+DASHING="${HOME}/gopath/bin/dashing"
+if [ ! -s "${DASHING}" ]; then
+    go get -u github.com/technosophos/dashing || exit 1
 fi
 
 mkdir -p "${BUILD}"
